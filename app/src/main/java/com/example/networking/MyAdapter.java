@@ -28,10 +28,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         return 0;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+        }
+
+        @Override
+        public void onClick(View view) {
+
         }
     }
 }
