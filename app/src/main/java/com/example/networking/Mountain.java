@@ -6,6 +6,14 @@ package com.example.networking;
 import com.google.gson.annotations.SerializedName;
 
 public class Mountain {
+    public String getName() {
+        return name;
+    }
+
+    Mountain(String name){
+        this.name = name;
+    }
+
     @SerializedName("ID")
     private String ID;
     private String name;

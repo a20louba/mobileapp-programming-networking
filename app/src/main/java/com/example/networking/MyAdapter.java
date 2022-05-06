@@ -1,5 +1,6 @@
 package com.example.networking;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,11 +9,20 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.BreakIterator;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-    List<String> mountains = Arrays.asList("Kinnekulle", "Billinen", "Matterhorn","Kebnekaise", "Mount-everest");
+    List<Mountain> mountains = new ArrayList<>();
+
+    public void setMountains(List<Mountain> mountains) {
+        this.mountains = mountains;
+        for(int i = 0; i < mountains.size(); i++){
+            Log.d("asd11", mountains.get(i).getName());
+
+        }
+    }
 
     @NonNull
     @Override
@@ -25,7 +35,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.name.setText(mountains.get(position));
+        Log.d("MainActivity", mountains.get(position).getName());
+        holder.name.setText(mountains.get(position).getName());
     }
 
     @Override
