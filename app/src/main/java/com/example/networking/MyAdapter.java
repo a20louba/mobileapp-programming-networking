@@ -7,7 +7,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.BreakIterator;
+import java.util.Arrays;
+import java.util.List;
+
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+    List<String> mountains = Arrays.asList("Kinnekulle", "Billinen", "Matterhorn","Kebnekaise", "Mount-everest");
 
     @NonNull
     @Override
@@ -20,7 +25,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
+        holder.name.setText(mountains.get(position));
     }
 
     @Override
@@ -30,6 +35,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
+        public BreakIterator name;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
         }
@@ -38,5 +45,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         public void onClick(View view) {
 
         }
+    }
+
+    public static class OnClickListener {
     }
 }
