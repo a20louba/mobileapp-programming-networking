@@ -13,7 +13,7 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
+import java.util.List;
 
 
 @SuppressWarnings("FieldCanBeLocal")
@@ -64,8 +64,12 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
     @Override
     public void onPostExecute(String json) {
         Gson gson = new Gson();
-        Mountain mountain = gson.fromJson(json, Mountain.class);
+        Mountain mountain[] = gson.fromJson(json, Mountain[].class);
         Log.d("MainActivity", json);
+        List <Mountain> list = new ArrayList<>();
+        for(int i = 0; i < mountain.length; i++){
+            list.add(mountain[i]);
+        }
     }
 
 }
