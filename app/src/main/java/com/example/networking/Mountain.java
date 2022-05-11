@@ -18,9 +18,9 @@ public class Mountain {
     private String ID;
     private String name;
     private String type;
-    private String company;
+    /*private String company;
     private String location;
-    private String category;
+    private String category;*/
     @SerializedName("size")
     private String size;
     private Auxdata auxdata;

@@ -3,37 +3,70 @@
 
 **Skriv din rapport här!**
 
-_Du kan ta bort all text som finns sedan tidigare_.
+Skapade en recyclerview och la till en URL, man behöver också en viewholder där behövs de varibler som som även skulle
+skrivas ut i recyclerviewItem. jag har använt mig av name och size. 
 
-## Följande grundsyn gäller dugga-svar:
 
-- Ett kortfattat svar är att föredra. Svar som är längre än en sida text (skärmdumpar och programkod exkluderat) är onödigt långt.
-- Svaret skall ha minst en snutt programkod.
-- Svaret skall inkludera en kort övergripande förklarande text som redogör för vad respektive snutt programkod gör eller som svarar på annan teorifråga.
-- Svaret skall ha minst en skärmdump. Skärmdumpar skall illustrera exekvering av relevant programkod. Eventuell text i skärmdumpar måste vara läsbar.
-- I de fall detta efterfrågas, dela upp delar av ditt svar i för- och nackdelar. Dina för- respektive nackdelar skall vara i form av punktlistor med kortare stycken (3-4 meningar).
 
-Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
+
+Här lägger jag till listan som jag vill ska skapas för att sedan hämta ur information ur.
+```
+ @Override
+    public void onPostExecute(String json) {
+
+        Gson gson = new Gson();
+        /*mountain = gson.fromJson(json, Mountain.class);*/
+        Type type = new TypeToken<List<Mountain>>() {}.getType();
+        List<Mountain> tempList = gson.fromJson(json, type);
+        Log.d("MainActivity", json);
+        //List <Mountain> list = new ArrayList<>();
+        mountain.addAll(tempList);
+        //adapter.setMountains(mountain);
+        adapter.notifyDataSetChanged();
+```
 
 ```
-function errorCallback(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            // Geolocation API stöds inte, gör något
-            break;
-        case error.POSITION_UNAVAILABLE:
-            // Misslyckat positionsanrop, gör något
-            break;
-        case error.UNKNOWN_ERROR:
-            // Okänt fel, gör något
-            break;
+ @Override
+    public void onPostExecute(String json) {
+
+        Gson gson = new Gson();
+        /*mountain = gson.fromJson(json, Mountain.class);*/
+        Type type = new TypeToken<List<Mountain>>() {}.getType();
+        List<Mountain> tempList = gson.fromJson(json, type);
+        Log.d("MainActivity", json);
+        //List <Mountain> list = new ArrayList<>();
+        mountain.addAll(tempList);
+        //adapter.setMountains(mountain);
+        adapter.notifyDataSetChanged();
+```
+
+Här skrivs det strings ut som jag kommer att använda mig av i arraylist. 
+``` 
+        @SerializedName("ID")
+        private String ID;
+        private String name;
+        private String type;
+        /*private String company;
+        private String location;
+        private String category;*/
+        @SerializedName("size")
+        private String size;
+        private Auxdata auxdata;
+```
+
+Här talar jag om vad som ska gås igenom, i detta fallet size, den kommer då igenom hur mycket plats som tas upp och returnera innehållet. 
+```  
+          @Override
+    public int getItemCount() {
+        return mountains.size();
     }
-}
 ```
+
+
 
 Bilder läggs i samma mapp som markdown-filen.
 
-![](android.png)
+![](Screenshot_20220511_143314.png)
 
 Läs gärna:
 
