@@ -12,6 +12,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
     public RecyclerViewHolder(@NonNull View itemView) {
         super(itemView);
+        name = itemView.findViewById(R.id.title);
 
     }
 }
